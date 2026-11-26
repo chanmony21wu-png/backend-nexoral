@@ -12,8 +12,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 COPY . .
+RUN rm -f .env bootstrap/cache/*.php
 RUN composer install --no-dev --optimize-autoloader \
     && chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 80
-CMD php artisan config:cache && php artisan migrate --force && apache2-foreground
+CMD php artisan config:clear && php artisan config:cache && php artisan migrate --force && apache2-foreground
