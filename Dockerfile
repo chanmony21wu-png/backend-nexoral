@@ -18,3 +18,5 @@ RUN sed -i 's/80/10000/g' /etc/apache2/ports.conf /etc/apache2/sites-available/0
 EXPOSE 10000
 
 CMD php artisan config:clear ; php artisan migrate --force ; apache2-foreground
+RUN apt-get update && apt-get install -y nodejs npm \
+    && npm ci && npm run build && rm -rf node_modules
