@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@nexora.test'],
             [
                 'name' => 'Admin',
-                'password' => Hash::make('your-password-here'),
+                'password' => Hash::make('11112222admin'),
             ]
         );
     }
